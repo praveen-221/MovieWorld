@@ -11,7 +11,7 @@ export default function Footer() {
         &copy; Movie World 2022
       </Typography>
       <Typography variant="caption">
-        Made with Love by MovieBuffs
+        Made with ❤️ by MovieBuffs
       </Typography>
     </div>
   );
