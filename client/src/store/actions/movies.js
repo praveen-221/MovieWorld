@@ -92,7 +92,22 @@ export const getMovieSuggestion = id => async dispatch => {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     });
-    const movies = await response.json();
+    let movies = await response.json();
+    movies = movies.map((movie) => {
+      let temp = movie;
+      let img = "";
+      for(var i=0; i< movie.image.length; i++){
+        if(movie.image[i] == "\\"){
+          console.log("yes");
+          img += "/";
+        } else {
+          img += movie.image[i];
+        }
+      }
+      temp.image = img;
+      return temp;
+    });
+    console.log({movies});
     if (response.ok) {
       dispatch({ type: GET_SUGGESTIONS, payload: movies });
     }
